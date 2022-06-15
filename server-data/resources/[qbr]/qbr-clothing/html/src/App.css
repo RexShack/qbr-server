@@ -1,0 +1,274 @@
+@import url("https://./fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap");
+
+@font-face {
+	font-family: "RDR Gothica";
+	src: url("./fonts/RDRGothica-Regular.eot");
+	src: url("./fonts/RDRGothica-Regular.eot?#iefix") format("embedded-opentype"),
+		url("./fonts/RDRGothica-Regular.woff2") format("woff2"),
+		url("./fonts/RDRGothica-Regular.woff") format("woff"),
+		url("./fonts/RDRGothica-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "RDR Catalogue";
+	src: url("./fonts/RDRCatalogueBold-Bold.eot");
+	src: url("./fonts/RDRCatalogueBold-Bold.eot?#iefix")
+			format("embedded-opentype"),
+		url("./fonts/RDRCatalogueBold-Bold.woff2") format("woff2"),
+		url("./fonts/RDRCatalogueBold-Bold.woff") format("woff"),
+		url("./fonts/RDRCatalogueBold-Bold.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "RDR Lino";
+	src: url("./fonts/RDRLino-Regular.eot");
+	src: url("./fonts/RDRLino-Regular.eot?#iefix") format("embedded-opentype"),
+		url("./fonts/RDRLino-Regular.woff2") format("woff2"),
+		url("./fonts/RDRLino-Regular.woff") format("woff"),
+		url("./fonts/RDRLino-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Hapna Slab Serif";
+	src: url("./fonts/HapnaSlabSerif-DemiBold.eot");
+	src: url("./fonts/HapnaSlabSerif-DemiBold.eot?#iefix")
+			format("embedded-opentype"),
+		url("./fonts/HapnaSlabSerif-DemiBold.woff2") format("woff2"),
+		url("./fonts/HapnaSlabSerif-DemiBold.woff") format("woff"),
+		url("./fonts/HapnaSlabSerif-DemiBold.ttf") format("truetype");
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Redemption";
+	src: url("./fonts/Redemption.eot");
+	src: url("./fonts/Redemption.eot?#iefix") format("embedded-opentype"),
+		url("./fonts/Redemption.woff2") format("woff2"),
+		url("./fonts/Redemption.woff") format("woff"),
+		url("./fonts/Redemption.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+#App {
+	width: 100%;
+	height: 100%;
+	font-family: "RDR Lino" !important;
+}
+
+#MainContent {
+	height: 100%;
+}
+
+.button {
+	text-indent: unset;
+	cursor: pointer;
+	background-color: transparent;
+	padding: 5px;
+	border: none;
+	font-family: "RDR Lino" !important;
+}
+
+.button-solid {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	background-color: rgb(211, 20, 20);
+	transition: all 200ms ease-in-out;
+}
+
+.button-solid:hover,
+.button-solid.active {
+	background-color: rgb(59, 59, 59);
+}
+
+.changeCamera_buttons {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	bottom: 10px;
+	width: 100%;
+	font-size: 25px;
+}
+
+.contentWrapper {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.contentWrapper_inner {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-image: url(./assets/inkroller_1a.png);
+	background-size: 100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 780px;
+	width: 550px;
+	margin-right: 20px;
+	padding: 40px;
+}
+
+.selectionMenu {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	height: max-content;
+	width: 100%;
+	font-size: 20px;
+	bottom: 0;
+}
+
+.clothingSection {
+	height: 90%;
+	width: 100%;
+	/* overflow-y: auto; */
+	color: #fff;
+}
+.clothingMenu_header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 32px;
+	font-family: "RDR Lino";
+	text-transform: uppercase;
+	margin-bottom: 10px;
+	background-image: url(./assets/menu_header_1a.png);
+	background-size: 100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding: 40px 30px;
+}
+
+.clothingMenu {
+	max-height: 80%;
+	overflow-y: auto;
+}
+
+.clothingMenu_options {
+	max-height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 0 20px;
+}
+
+.clothingMenu_option {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 30px;
+	background-image: url(./assets/selection_box_bg_1d.png);
+	background-size: 100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.clothingMenu_option p {
+	font-size: 20px;
+}
+
+.skinItem {
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 30px;
+	background-image: url(./assets/selection_box_bg_1d.png);
+	background-size: 100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.skinItem_text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 17px;
+	width: 100%;
+}
+
+.skinControls {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.slider {
+	width: 70% !important;
+}
+
+.modalText {
+	font-family: "RDR Lino" !important;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.modalText h1 {
+	font-size: 32px;
+}
+
+.modalText input {
+	padding: 5px;
+}
+
+.modalButtons {
+	font-family: "Love Ya Like A Sister", sans-serif !important;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.modalButtons button {
+	width: 30%;
+}
+
+.rc-slider-track {
+	background-color: rgb(211, 20, 20) !important;
+}
+
+.rc-slider-handle {
+	border: solid 2px #000 !important;
+	background-color: rgb(211, 20, 20) !important;
+}
+
+.rc-slider-handle:active {
+	box-shadow: 0 0 5px #e0e0e0;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: rgb(59, 59, 59);
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgb(211, 20, 20);
+	border-radius: 5px;
+	transition: all 200ms ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgb(173, 19, 19);
+}

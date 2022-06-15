@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Bahianita|Do+Hyeon|Khand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@font-face {
+    font-family: cursive;
+    src: url(https://cdn.discordapp.com/attachments/644631964774694942/738180868748607649/GOTHAM-MEDIUM.OTF);
+}
+
+@font-face {
+    font-family: cursive;
+    src: url(https://cdn.discordapp.com/attachments/644631964774694942/738179761620123698/GOTHAM-BOLD.OTF);
+}
+
+body {
+    background: transparent !important;
+    margin-top: 80px;
+}
+
+#bankingContainer {
+    background: #F9F6EE !important;
+    border-radius: 20px;
+    min-height: 800px;
+    max-height: 800px;
+    display: none;
+}
+
+#v-pills-tabContent::-webkit-scrollbar,
+#v-pills-tabContent-atm::-webkit-scrollbar {
+    width: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: transparent
+}
+
+.title {
+    color: rgb(0, 0, 0);
+    border-left: 2px solid rgb(0, 0, 0);
+    font-family: cursive;
+}
