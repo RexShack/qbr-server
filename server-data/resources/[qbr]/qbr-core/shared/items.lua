@@ -1,8 +1,23 @@
 QBShared = QBShared or {}
-QBShared.Items = {
-	-- Items
-	['bloodmoney']				= {['name'] = 'bloodmoney',				['label'] = 'Blood Money',					['weight'] = 0,			['type'] = 'item',				['image'] = 'rsg_bloodmoney.png',			['unique'] = false,		['useable'] = true,		['shouldClose'] = true,		['combinable'] = nil,	['level'] = 0,		['description'] = 'blood money'},
 
+QBShared.Items = {
+	-- rsg items
+	['bloodmoney']		= {['name'] = 'bloodmoney',		['label'] = 'Blood Money',		['weight'] = 0,		['type'] = 'item',	['image'] = 'rsg_bloodmoney.png',					['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'blood money'},
+
+	-- rsg pets
+	['foxhound']		= {['name'] = 'foxhound',		['label'] = 'Fox Hound',		['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_americanfoxhound.png',		['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'American Foxhound'},
+	['sheperd']			= {['name'] = 'sheperd',		['label'] = 'Shepherd',			['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_australianshepherd.png',	['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Australian Sheperd'},
+	['coonhound']		= {['name'] = 'coonhound',		['label'] = 'Coon Hound',		['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_bluetickcoonhound.png',		['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Bluetick Coonhound'},
+	['catahoulacur']	= {['name'] = 'catahoulacur',	['label'] = 'Catahoula Cur',	['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_catahoularcur.png',			['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Catahoula Cur'},
+	['bayretriever']	= {['name'] = 'bayretriever',	['label'] = 'Retriever',		['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_chesbayretriever.png',		['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Ches Bay Retriever'},
+	['collie']			= {['name'] = 'collie',			['label'] = 'Collie',			['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_collie.png',				['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Collie'},
+	['hound']			= {['name'] = 'hound',			['label'] = 'Hound',			['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_hound.png',					['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Hound'},
+	['husky']			= {['name'] = 'husky',			['label'] = 'Husky',			['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_husky.png',					['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Husky'},
+	['lab']				= {['name'] = 'lab',			['label'] = 'Lab',				['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_lab.png',					['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Lab'},
+	['poodle']			= {['name'] = 'poodle',			['label'] = 'Poodle',			['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_poodle.png',				['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Poodle'},
+	['street']			= {['name'] = 'street',			['label'] = 'Street',			['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_street.png',				['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'Street'},
+	
+	-- qbr default items
  	['water_bottle'] 			= {['name'] = 'water_bottle', 			['label'] = 'Bottle of Water', 				['weight'] = 500, 		['type'] = 'item', 				['image'] = 'generic_bottle.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  ['combinable'] = nil,		['level'] = 0,		['description'] = 'For all the thirsty out there'},
  	['bread'] 					= {['name'] = 'bread', 					['label'] = 'Bread Roll', 					['weight'] = 125, 		['type'] = 'item', 				['image'] = 'consumable_bread_roll.png', 	['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  ['combinable'] = nil,		['level'] = 0,		['description'] = 'A small bread roll'},
  	['chocolate'] 				= {['name'] = 'chocolate', 				['label'] = 'Chocolate Bar', 				['weight'] = 100, 		['type'] = 'item', 				['image'] = 'consumable_chocolate_bar.png', ['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	  ['combinable'] = nil,		['level'] = 0,		['description'] = 'A nice little comfort snack'},
