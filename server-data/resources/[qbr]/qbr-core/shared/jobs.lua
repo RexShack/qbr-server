@@ -12,6 +12,17 @@ QBShared.Jobs = {
             },
         },
 	},
+	['railroad'] = {
+		label = 'Railroad',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Conductor',
+                payment = 25
+            },
+        },
+	},
 	['police'] = {
 		label = 'Law Enforcement',
 		defaultDuty = true,
