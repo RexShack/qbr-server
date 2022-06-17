@@ -1,0 +1,5 @@
+	-- items
+	['moonshine']		= {['name'] = 'moonshine',		['label'] = 'Moonshine',	['weight'] = 100,	['type'] = 'item',	['image'] = 'rsg_moonshine.png',			['unique'] = false,	['useable'] = true,	['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'made with the moonshine kit'},
+	['beer']		= {['name'] = 'beer',			['label'] = 'Beer',		['weight'] = 500,	['type'] = 'item',	['image'] = 'rsg_beer.png',				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	['combinable'] = nil, 	['level'] = 0,	['description'] = 'For all the thirsty out there'},
+	['whiskey']		= {['name'] = 'whiskey',		['label'] = 'Whiskey',		['weight'] = 500,	['type'] = 'item',	['image'] = 'rsg_whiskey.png',				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	['combinable'] = nil, 	['level'] = 0,	['description'] = 'For all the thirsty out there'},
+	['coffee']		= {['name'] = 'coffee',			['label'] = 'Coffee',		['weight'] = 500,	['type'] = 'item',	['image'] = 'rsg_coffee.png',				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	['combinable'] = nil, 	['level'] = 0,	['description'] = 'For all the thirsty out there'},
