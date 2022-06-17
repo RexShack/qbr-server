@@ -83,7 +83,7 @@ Citizen.CreateThread(function()
 					SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
 					DeleteObject(moonshineObject)
 					PlaySoundFrontend("SELECT", "RDRO_Character_Creator_Sounds", true, 0)
-					exports['rsg_notify']:DisplayNotification('moonshine destroyed!', 5000)
+					exports['qbr-core']:Notify(9, 'moonshine destroyed!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 				end
 			end
 		end
@@ -134,9 +134,9 @@ AddEventHandler("rsg_moonshiner:client:moonshine", function()
 			TriggerServerEvent('QBCore:Server:AddItem', "moonshine", 1)
 			TriggerEvent("inventory:client:ItemBox", sharedItems["moonshine"], "add")
 			PlaySoundFrontend("SELECT", "RDRO_Character_Creator_Sounds", true, 0)
-			exports['rsg_notify']:DisplayNotification('you made some moonshine', 5000)
+			exports['qbr-core']:Notify(9, 'you made some moonshine', 5000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
 		else
-			exports['rsg_notify']:DisplayNotification('you don\'t have the ingredients to make this!', 5000)
+			exports['qbr-core']:Notify(9, 'you don\'t have the ingredients to make this!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 		end
 	end, { ['sugar'] = 1, ['corn'] = 1, ['water'] = 1 })
 end)

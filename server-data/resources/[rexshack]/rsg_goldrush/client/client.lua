@@ -1,6 +1,5 @@
 local sharedItems = exports['qbr-core']:GetItems()
 
-
 CreateThread(function()
     for k, v in pairs(Config.GoldRushLocation) do
         exports['qbr-core']:createPrompt("goldclaim"..k, v.Coords, Config.Use, 'Check for Gold', {
@@ -29,11 +28,10 @@ RegisterNetEvent("rsg_goldrush:client:goldclaim", function()
 				TriggerServerEvent('rsg_goldrush::server:reward')
 			end)
 		else
-			exports['rsg_notify']:DisplayNotification('you do not hold the lease to this claim!', 5000)
+			exports['qbr-core']:Notify(9, 'you do not hold the lease to this claim!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 		end
 	end, { ['claimlease'] = 1 })
 end)
-
 
 -- goto gold claim 1
 RegisterNetEvent('rsg_goldrush:client:gotoclaim', function()

@@ -9,7 +9,6 @@
 
 # Dependancies
 - qbr-core : https://github.com/qbcore-redm-framework
-- rsg_notify : https://github.com/RexShack/rsg_notify
 
 # Installation
 - ensure that the dependancies are added and started

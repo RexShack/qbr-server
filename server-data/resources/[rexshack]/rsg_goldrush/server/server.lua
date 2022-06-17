@@ -15,18 +15,18 @@ AddEventHandler('rsg_goldrush::server:reward', function()
 		local smallamount = 3
 		Player.Functions.AddItem('smallnugget', smallamount)
 		TriggerClientEvent('inventory:client:ItemBox', src, sharedItems['smallnugget'], "add")
-		TriggerClientEvent('rsg_notify:client:notifiy', src, 'you found '..smallamount..' small nuggets', 5000)
+		TriggerClientEvent('QBCore:Notify', src, 9, 'you found '..smallamount..' small nuggets', 5000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
 	elseif randomNumber == 2 then
 		local mediumamount = 2
 		Player.Functions.AddItem('mediumnugget', mediumamount)
 		TriggerClientEvent('inventory:client:ItemBox', src, sharedItems['mediumnugget'], "add")
-		TriggerClientEvent('rsg_notify:client:notifiy', src, 'you found '..mediumamount..' medium nuggets', 5000)
+		TriggerClientEvent('QBCore:Notify', src, 9, 'you found '..mediumamount..' medium nuggets', 5000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
 	elseif randomNumber == 3 then
 		local largeamount = 1
 		Player.Functions.AddItem('largenugget', largeamount)
 		TriggerClientEvent('inventory:client:ItemBox', src, sharedItems['largenugget'], "add")
-		TriggerClientEvent('rsg_notify:client:notifiy', src, 'you found '..largeamount..' large nugget', 5000)
+		TriggerClientEvent('QBCore:Notify', src, 9, 'you found '..largeamount..' large nugget', 5000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
 	else
-		TriggerClientEvent('rsg_notify:client:notifiy', src, "no luck this time", 5000)
+		TriggerClientEvent('QBCore:Notify', src, 9, 'no luck this time', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 	end
 end)
