@@ -4,6 +4,7 @@ QBShared.Items = {
 	-- rsg items
 	['bloodmoney']		= {['name'] = 'bloodmoney',		['label'] = 'Blood Money',		['weight'] = 0,		['type'] = 'item',	['image'] = 'rsg_bloodmoney.png',	['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'blood money'},
 	['shovel']			= {['name'] = 'shovel',			['label'] = 'Shovel',			['weight'] = 100,	['type'] = 'item',	['image'] = 'rsg_shovel.png',		['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	["description"] = 'equipment for digging'},
+	["raw_meat"] 		= {["name"] = "raw_meat", 		["label"] = "BigGame Meat", 	["weight"] = 300, 	["type"] = "item",	["image"] = "rsg_raw_meat.png", 	['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	["description"] = "ready for cooking"},
 
 	-- rsg pets
 	['foxhound']		= {['name'] = 'foxhound',		['label'] = 'Fox Hound',		['weight'] = 500,	['type'] = 'item',	['image'] = 'animal_dog_americanfoxhound.png',		['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'American Foxhound'},
