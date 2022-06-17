@@ -27,6 +27,8 @@ QBShared.Items = {
 	['tomatoseed']		= {['name'] = 'tomatoseed',			['label'] = 'Tomato Seed',		['weight'] = 0,		['type'] = 'item',	['image'] = 'rsg_seeds.png',			['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'used in farming'},
 	['tomato']			= {['name'] = 'tomato',				['label'] = 'Tomato',			['weight'] = 100,	['type'] = 'item',	['image'] = 'rsg_tomato.png',			['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'product from farming'},
 	['wateringcan']		= {['name'] = 'wateringcan',		['label'] = 'Wateringcan',		['weight'] = 300,	['type'] = 'item',	['image'] = 'rsg_wateringcan.png',		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'equipment for watering stuff'},
+	['fishingrod']		= {['name'] = 'fishingrod',			['label'] = 'Fishing Rod',		['weight'] = 300,	['type'] = 'item',	['image'] = 'rsg_fishingrod.png',		['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'used for fishing'},
+	['fishingbait']		= {['name'] = 'fishingbait',		['label'] = 'Fishing Bait',		['weight'] = 10,	['type'] = 'item',	['image'] = 'rsg_fishingbait.png',		['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'used for fishing'},
 
 	-- crafting bpos
 	['bposhovel']			= {['name'] = 'bposhovel',			['label'] = 'BPO Shovel',		['weight'] = 0,		['type'] = 'item',	['image'] = 'bposhovel.png',			['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'blueprint original'},
