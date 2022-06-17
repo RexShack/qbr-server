@@ -159,3 +159,10 @@ CREATE TABLE IF NOT EXISTS `horses` (
   `components`  varchar(5000) NOT NULL DEFAULT '{}',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1;
+
+CREATE TABLE `indian_plants` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `properties` text NOT NULL,
+  `plantid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1;
