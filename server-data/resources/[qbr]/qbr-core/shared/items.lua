@@ -43,6 +43,8 @@ QBShared.Items = {
 	['tobaccodry']		= {['name'] = 'tobaccodry',			['label'] = 'Dry Tobacco',		['weight'] = 50,	['type'] = 'item',	['image'] = 'rsg_tobaccodry.png',		['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'product from farming'},
 	['cigar']			= {['name'] = 'cigar',				['label'] = 'Cigar',			['weight'] = 10,	['type'] = 'item',	['image'] = 'rsg_cigar.png',			['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'rolled to perfection'},
 	['cigarbox']		= {['name'] = 'cigarbox',			['label'] = 'Cigar Box',		['weight'] = 150,	['type'] = 'item',	['image'] = 'rsg_cigarbox.png',			['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'box of cigars rolled to perfection'},
+	['dynamite']		= {['name'] = 'dynamite',			['label'] = 'Dynamite',			['weight'] = 100,	['type'] = 'item',	['image'] = 'rsg_dynamite.png',			['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'for blowing stuff up'},
+	['goldbar']			= {['name'] = 'goldbar',			['label'] = 'Gold Bar',			['weight'] = 500,	['type'] = 'item',	['image'] = 'rsg_goldbar.png',			['unique'] = false,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'solid gold bar'},
 
 	-- crafting bpos
 	['bposhovel']			= {['name'] = 'bposhovel',			['label'] = 'BPO Shovel',		['weight'] = 0,		['type'] = 'item',	['image'] = 'bposhovel.png',			['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	['combinable'] = nil,	['level'] = 0,	['description'] = 'blueprint original'},
