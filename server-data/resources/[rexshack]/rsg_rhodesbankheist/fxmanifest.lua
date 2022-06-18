@@ -16,4 +16,7 @@ shared_scripts {
     'config.lua'
 }
 
+dependency 'qbr-core' -- https://github.com/qbcore-redm-framework/qbr-core
+dependency 'rsg_alerts' -- https://github.com/RexShack/rsg_alerts
+
 lua54 'yes'

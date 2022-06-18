@@ -40,6 +40,10 @@ AddEventHandler('rsg_rhodesbankheist:client:boom', function()
 			DeleteObject(prop)
 			Citizen.InvokeNative(0x6BAB9442830C7F53, 3483244267, 0)
 			TriggerEvent('rsg_rhodesbankheist:client:policenpc')
+			local alertcoords = GetEntityCoords(PlayerPedId())
+			local blipname = 'bank robbery'
+			local alertmsg = 'bank robbery in progress'
+			TriggerEvent('rsg_alerts:client:lawmanalert', alertcoords, blipname, alertmsg)
 		else
 			exports['qbr-core']:Notify(9, 'you need dynamite to do that', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 		end
