@@ -1,4 +1,6 @@
 local sharedItems = exports['qbr-core']:GetItems()
+local initialCooldownSeconds = 3600 -- cooldown time in seconds
+local cooldownSecondsRemaining = 0 -- done to zero cooldown on restart
 local vault1 = false
 local vault2 = false
 
@@ -21,33 +23,38 @@ end)
 -- blow vault doors
 RegisterNetEvent('rsg_rhodesbankheist:client:boom')
 AddEventHandler('rsg_rhodesbankheist:client:boom', function()
-	exports['qbr-core']:TriggerCallback('QBCore:HasItem', function(hasItem)
-		if hasItem then
-			TriggerServerEvent('QBCore:Server:RemoveItem', 'dynamite', 1)
-			TriggerEvent('inventory:client:ItemBox', sharedItems['dynamite'], 'remove')
-			local playerPed = PlayerPedId()
-			TaskStartScenarioInPlace(playerPed, GetHashKey('WORLD_HUMAN_CROUCH_INSPECT'), 5000, true, false, false, false)
-			Citizen.Wait(5000)
-			ClearPedTasksImmediately(PlayerPedId())
-			local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.5, 0.0))
-			local prop = CreateObject(GetHashKey("p_dynamite01x"), x, y, z, true, false, true)
-			SetEntityHeading(prop, GetEntityHeading(PlayerPedId()))
-			PlaceObjectOnGroundProperly(prop)
-			FreezeEntityPosition(prop,true)
-			exports['qbr-core']:Notify(9, 'explosives placed now stand well back!', 10000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
-			Wait(10000)
-			AddExplosion(1282.2947, -1308.442, 77.03968, 25 , 5000.0 ,true , false , 27)
-			DeleteObject(prop)
-			Citizen.InvokeNative(0x6BAB9442830C7F53, 3483244267, 0)
-			TriggerEvent('rsg_rhodesbankheist:client:policenpc')
-			local alertcoords = GetEntityCoords(PlayerPedId())
-			local blipname = 'bank robbery'
-			local alertmsg = 'bank robbery in progress'
-			TriggerEvent('rsg_alerts:client:lawmanalert', alertcoords, blipname, alertmsg)
-		else
-			exports['qbr-core']:Notify(9, 'you need dynamite to do that', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
-		end
-	end, { ['dynamite'] = 1 })
+	if cooldownSecondsRemaining == 0 then
+		exports['qbr-core']:TriggerCallback('QBCore:HasItem', function(hasItem)
+			if hasItem then
+				TriggerServerEvent('QBCore:Server:RemoveItem', 'dynamite', 1)
+				TriggerEvent('inventory:client:ItemBox', sharedItems['dynamite'], 'remove')
+				local playerPed = PlayerPedId()
+				TaskStartScenarioInPlace(playerPed, GetHashKey('WORLD_HUMAN_CROUCH_INSPECT'), 5000, true, false, false, false)
+				Citizen.Wait(5000)
+				ClearPedTasksImmediately(PlayerPedId())
+				local x,y,z = table.unpack(GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 0.5, 0.0))
+				local prop = CreateObject(GetHashKey("p_dynamite01x"), x, y, z, true, false, true)
+				SetEntityHeading(prop, GetEntityHeading(PlayerPedId()))
+				PlaceObjectOnGroundProperly(prop)
+				FreezeEntityPosition(prop,true)
+				exports['qbr-core']:Notify(9, 'explosives placed now stand well back!', 10000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
+				Wait(10000)
+				AddExplosion(1282.2947, -1308.442, 77.03968, 25 , 5000.0 ,true , false , 27)
+				DeleteObject(prop)
+				Citizen.InvokeNative(0x6BAB9442830C7F53, 3483244267, 0)
+				TriggerEvent('rsg_rhodesbankheist:client:policenpc')
+				local alertcoords = GetEntityCoords(PlayerPedId())
+				local blipname = 'bank robbery'
+				local alertmsg = 'bank robbery in progress'
+				TriggerEvent('rsg_alerts:client:lawmanalert', alertcoords, blipname, alertmsg)
+				handleCooldown()
+			else
+				exports['qbr-core']:Notify(9, 'you need dynamite to do that', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
+			end
+		end, { ['dynamite'] = 1 })
+	else
+		exports['qbr-core']:Notify(9, 'you can\'t do that right now', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
+	end
 end)
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -150,3 +157,14 @@ AddEventHandler('rsg_rhodesbankheist:client:policenpc', function()
 end)
 
 ------------------------------------------------------------------------------------------------------------------------
+
+-- cooldown
+function handleCooldown()
+    cooldownSecondsRemaining = initialCooldownSeconds
+    Citizen.CreateThread(function()
+        while cooldownSecondsRemaining > 0 do
+            Citizen.Wait(1000)
+            cooldownSecondsRemaining = cooldownSecondsRemaining - 1
+        end
+    end)
+end
