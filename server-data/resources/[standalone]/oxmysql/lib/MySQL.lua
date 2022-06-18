@@ -68,9 +68,13 @@ local GetCurrentResourceName = GetCurrentResourceName()
 
 local function await(fn, query, parameters)
 	local p = promise.new()
-	fn(nil, query, parameters, function(result)
+	fn(nil, query, parameters, function(result, error)
+		if error then
+			return p:reject(error)
+		end
+
 		p:resolve(result)
-	end, GetCurrentResourceName)
+	end, GetCurrentResourceName, true)
 	return Await(p)
 end
 
@@ -81,7 +85,8 @@ setmetatable(MySQL, {
 			self[method] = setmetatable({}, {
 
 				__call = function(_, query, parameters, cb)
-					return oxmysql[method](nil, safeArgs(query, parameters, cb, method == 'transaction'))
+					query, parameters, cb = safeArgs(query, parameters, cb, method == 'transaction')
+					return oxmysql[method](nil, query, parameters, cb, GetCurrentResourceName, false)
 				end,
 
 				__index = function(_, index)
