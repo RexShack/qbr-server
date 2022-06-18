@@ -114,6 +114,7 @@ RegisterNetEvent('rsg_fasttravel:client:menu', function(data)
 			end
 		end,
 		function(data, menu)
+		menu.close()
 	end)
 end)
 
