@@ -88,6 +88,7 @@ Citizen.CreateThread(function()
 
 			if distance < maxDistance then
 				if distance < 1.75 then
+					DrawText3D(doorID.textCoords.x, doorID.textCoords.y, doorID.textCoords.z, " " ,doorID.locked)
 					if IsControlJustPressed(0,Config.KeyPress) and CoolDown < 1 then
 						CoolDown = 1000
 						local state = not doorID.locked
@@ -161,12 +162,13 @@ function ChangeStateText(coords, state)
 		while timeout > 0 do
 			Wait(0)
 			timeout = timeout - 1
-			DrawText3Ds(coords.x, coords.y, coords.z, Text, r, g, b)
+			DrawText3D(coords.x, coords.y, coords.z, Text, r, g, b)
 		end
 	end)
 end
 
-function DrawText3Ds(x, y, z, text)
+-- door lock image
+function DrawText3D(x, y, z, text , state)
     local onScreen,_x,_y=GetScreenCoordFromWorldCoord(x, y, z)
     local px,py,pz=table.unpack(GetGameplayCamCoord())
 
@@ -176,7 +178,11 @@ function DrawText3Ds(x, y, z, text)
     local str = CreateVarString(10, "LITERAL_STRING", text, Citizen.ResultAsLong())
     SetTextCentre(1)
     DisplayText(str,_x,_y)
-    local factor = (string.len(text)) / 150
+    if state then
+        DrawSprite("generic_textures", "lock", _x, _y + 0.0125, 0.04, 0.045, 0.1, 100, 1, 1, 255, 0)
+    else
+        DrawSprite("generic_textures", "lock", _x, _y + 0.0125, 0.04, 0.045, 0.1, 67, 160, 71, 255, 0)
+    end
 end
 
 -- Set state for a door
