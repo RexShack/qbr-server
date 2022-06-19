@@ -1,6 +1,8 @@
 local sharedItems = exports['qbr-core']:GetItems()
 local initialCooldownSeconds = 3600 -- cooldown time in seconds
 local cooldownSecondsRemaining = 0 -- done to zero cooldown on restart
+local lockpicked = false
+local dynamiteused = false
 local vault1 = false
 local vault2 = false
 
@@ -12,12 +14,71 @@ Citizen.CreateThread(function()
     end
 end)
 
+------------------------------------------------------------------------------------------------------------------------
+
+-- lockpick door
 Citizen.CreateThread(function()
-	exports['qbr-core']:createPrompt('trigger-1', vector3(1282.2947, -1308.442, 77.03968), 0xF3830D8E, 'Place Dynamite', {
-		type = 'client',
-		event = 'rsg_rhodesbankheist:client:boom',
-		args = {},
-	})
+	while true do
+		Citizen.Wait(0)
+		local pos, awayFromObject = GetEntityCoords(PlayerPedId()), true
+		local object = Citizen.InvokeNative(0xF7424890E4A094C0, 2058564250, 0)
+		if object ~= 0 and cooldownSecondsRemaining == 0 and lockpicked == false then
+			local objectPos = GetEntityCoords(object)
+			if #(pos - objectPos) < 3.0 then
+				awayFromObject = false
+				DrawText3Ds(objectPos.x, objectPos.y, objectPos.z + 1.0, "~g~J~w~ - Lockpick")
+				if IsControlJustReleased(0, 0xF3830D8E) then -- [J]
+					exports['qbr-core']:TriggerCallback('QBCore:HasItem', function(hasItem)
+						if hasItem then
+							TriggerServerEvent('QBCore:Server:RemoveItem', 'lockpick', 1)
+							TriggerEvent("inventory:client:ItemBox", sharedItems['lockpick'], 'remove')
+							TriggerEvent('qbr-lockpick:client:openLockpick', lockpickFinish)
+						else
+							exports['qbr-core']:Notify(9, 'you need a lockpick', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
+						end
+					end, { ['lockpick'] = 1 })
+				end
+			end
+		end
+		if awayFromObject then
+			Citizen.Wait(1000)
+		end
+	end
+end)
+
+function lockpickFinish(success)
+    if success then
+		exports['qbr-core']:Notify(9, 'lockpick successful', 5000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
+		Citizen.InvokeNative(0x6BAB9442830C7F53, 2058564250, 0)
+		lockpicked = true
+    else
+        exports['qbr-core']:Notify(9, 'lockpick unsuccessful', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
+    end
+end
+
+------------------------------------------------------------------------------------------------------------------------
+
+-- vault prompt
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(0)
+		local pos, awayFromObject = GetEntityCoords(PlayerPedId()), true
+		local object = Citizen.InvokeNative(0xF7424890E4A094C0, 3483244267, 0)
+		if object ~= 0 and cooldownSecondsRemaining == 0 and dynamiteused == false then
+			local objectPos = GetEntityCoords(object)
+			if #(pos - objectPos) < 3.0 then
+				awayFromObject = false
+				DrawText3Ds(objectPos.x, objectPos.y, objectPos.z + 1.0, "~g~J~w~ - Place Dynamite")
+				if IsControlJustReleased(0, 0xF3830D8E) then -- [J]
+					TriggerEvent('rsg_rhodesbankheist:client:boom')
+					dynamiteused = true
+				end
+			end
+		end
+		if awayFromObject then
+			Citizen.Wait(1000)
+		end
+	end
 end)
 
 -- blow vault doors
@@ -72,7 +133,7 @@ RegisterNetEvent('rsg_rhodesbankheist:client:checkvault1', function()
 	local player = PlayerPedId()
 	SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
 	if vault1 == false then
-		exports['qbr-core']:Progressbar("search_vault", "Stealing Cash", 10000, false, true, {
+		exports['qbr-core']:Progressbar("search_vault", "Stealing Gold", 10000, false, true, {
 			disableMovement = false,
 			disableCarMovement = false,
 			disableMouse = false,
@@ -107,7 +168,7 @@ RegisterNetEvent('rsg_rhodesbankheist:client:checkvault2', function()
 	local player = PlayerPedId()
 	SetCurrentPedWeapon(player, `WEAPON_UNARMED`, true)
 	if vault2 == false then
-		exports['qbr-core']:Progressbar("search_vault", "Stealing Cash", 10000, false, true, {
+		exports['qbr-core']:Progressbar("search_vault", "Stealing Gold", 10000, false, true, {
 			disableMovement = false,
 			disableCarMovement = false,
 			disableMouse = false,
@@ -167,4 +228,16 @@ function handleCooldown()
             cooldownSecondsRemaining = cooldownSecondsRemaining - 1
         end
     end)
+end
+
+------------------------------------------------------------------------------------------------------------------------
+
+function DrawText3Ds(x, y, z, text)
+    local onScreen,_x,_y=GetScreenCoordFromWorldCoord(x, y, z)
+    SetTextScale(0.35, 0.35)
+    SetTextFontForCurrentCommand(9)
+    SetTextColor(255, 255, 255, 215)
+    local str = CreateVarString(10, "LITERAL_STRING", text, Citizen.ResultAsLong())
+    SetTextCentre(1)
+    DisplayText(str,_x,_y)
 end

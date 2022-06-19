@@ -1,7 +1,9 @@
 Config = {}
 
 Config.VaultDoors = {
-	3483244267, -- vault door
+	1634148892, -- gate locked (no access)
+	2058564250, -- corridor door (use lockpick)
+	3483244267, -- vault door (use dynamite)
 }
 
 Config.HeistNpcs = {
