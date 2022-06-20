@@ -1,10 +1,6 @@
 QB = {}
 
--- Enable spawning inside houses from the spawn selector
-QB.EnableHouses = false
-
--- Enable spawning inside apartments from the spawn selector
-QB.EnableApartments = false
+QB.NewPlayerSpawn = { coords = { x = -367.7612, y = 739.81701, z = 116.22689, h = 340.66815 } } -- valentine 
 
 QB.Spawns = {
     ["emerald"] = {
@@ -28,14 +24,15 @@ QB.Spawns = {
         location = "rhodesst",
         label = "Rhodes Sheriff Station",
     },
-    ["default"] = {
+	
+    ["valentine"] = {
         coords = {
-            x = 2556.46,
-            y = -1159.73,
-            z = 53.7,
-            h = 137.05
+            x = -367.7612,
+            y = 739.81701,
+            z = 116.22689,
+            h = 340.66815
         },
-        location = "default",
-        label = "Default Spawn"
+        location = "valentine",
+        label = "Valentine",
     }
 }

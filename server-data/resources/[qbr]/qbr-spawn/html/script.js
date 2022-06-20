@@ -14,12 +14,9 @@ $(document).ready(function() {
         }
 
         if (data.action == "setupLocations") {
-            setupLocations(data.locations, data.houses)
+            setupLocations(data.locations)
         }
 
-        if (data.action == "setupAppartements") {
-            setupApps(data.locations)
-        }
     })
 })
 
