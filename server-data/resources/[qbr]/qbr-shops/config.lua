@@ -7,7 +7,7 @@ Config.Products = {
         [3] = { name = "apple", 						price = 1, 	amount = 50, info = {}, type = "item", slot = 3, },
         [4] = { name = "chocolate", 					price = 2, 	amount = 50, info = {}, type = "item", slot = 4, },
 		[5] = { name = "shovel", 						price = 10, amount = 50, info = {}, type = "item", slot = 5, },
-		[6] = { name = "weapon_kit_metal_detector", 	price = 50, amount = 50, info = {}, type = "item", slot = 6, },
+		[6] = { name = "weapon_kit_metal_detector", 	price = 50, amount = 50, info = {}, type = "weapon", slot = 6, },
     },
     ["saloon"] = {
         [1] = { name = "beer",		price = 7, 	amount = 50, 	info = {}, type = "item", slot = 1, },
@@ -16,7 +16,7 @@ Config.Products = {
         [4] = { name = "coffee",	price = 5, 	amount = 500, 	info = {}, type = "item", slot = 4, },
     },
     ["weapons"] = {
-        [1] = { name = "weapon_revolver_cattleman", price = 250, 	amount = 250, info = {}, type = "item", slot = 1, },
+        [1] = { name = "weapon_revolver_cattleman", price = 250, 	amount = 250, info = {}, type = "weapon", slot = 1, },
         [2] = { name = "ammo_revolver", 			price = 15, 	amount = 250, info = {}, type = "item", slot = 2, }, 
 	},
 }
