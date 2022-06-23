@@ -258,6 +258,7 @@ end)
 
 OpenMenu = function(newPlayer, menuType)
     if newPlayer then
+		ClothingRoomTransition(Config.StaticClothingRoom, true)
         local skins = GetSkinMaxValues()
         local clothes = GetClothesMaxValues()
         SendNUIMessage({

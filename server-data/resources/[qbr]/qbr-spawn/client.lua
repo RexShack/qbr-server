@@ -167,10 +167,14 @@ RegisterNetEvent('qbr-spawn:client:setupSpawns', function(cData, new)
 		})
     else
 		local player = PlayerPedId()
+		DoScreenFadeOut(650)
+		while not IsScreenFadedOut() do
+			Wait(0)
+		end
 		Citizen.InvokeNative(0x203BEFFDBE12E96A, player, QB.NewPlayerSpawn.coords.x, QB.NewPlayerSpawn.coords.y, QB.NewPlayerSpawn.coords.z, QB.NewPlayerSpawn.coords.h)
         FreezeEntityPosition(player, false)
         SetEntityVisible(player, true)
-		TriggerEvent('qbr-clothing:client:newPlayer')
-        newPlayer = false
+		TriggerEvent('qbr-clothing:client:openMenu', true, 'allMenu')
+		DoScreenFadeIn(650)
     end
 end)
