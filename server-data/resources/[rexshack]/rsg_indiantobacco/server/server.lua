@@ -80,7 +80,7 @@ AddEventHandler('rsg_indiantobacco:server:plantNewSeed', function(type, location
     end
 
     if PlantCount >= Config.MaxPlantCount then
-		TriggerClientEvent('rsg_notify:client:notifiy', src, 'You already have ' .. Config.MaxPlantCount .. ' plants down', 5000)
+		TriggerClientEvent('QBCore:Notify', src, 9, 'You already have ' .. Config.MaxPlantCount .. ' plants down', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
     else
         table.insert(Config.Plants, SeedData)
         TriggerEvent('rsg_indiantobacco:server:savePlant', SeedData, plantId)
@@ -111,7 +111,7 @@ AddEventHandler('rsg_indiantobacco:server:destroyPlant', function(plantId)
 	TriggerClientEvent('rsg_indiantobacco:client:removePlantObject', src, plantId)
 	TriggerEvent('rsg_indiantobacco:server:PlantRemoved', plantId)
 	TriggerEvent('rsg_indiantobacco:server:updatePlants')
-	TriggerClientEvent('rsg_notify:client:notifiy', src, 'you distroyed the plant', 5000)
+	TriggerClientEvent('QBCore:Notify', src, 9, 'you distroyed the plant', 5000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
 end)
 
 -- harvest plant
@@ -154,19 +154,19 @@ AddEventHandler('rsg_indiantobacco:server:harvestPlant', function(plantId)
 			local pooramount = math.random(1,3)
 			Player.Functions.AddItem('indtobacco', pooramount)
 			TriggerClientEvent('inventory:client:ItemBox', src, sharedItems['indtobacco'], "add")
-			TriggerClientEvent('rsg_notify:client:notifiy', src, 'You harvest '.. pooramount ..' Indian Tobacco', 5000)
+			TriggerClientEvent('QBCore:Notify', src, 9, 'You harvest '.. pooramount ..' Indian Tobacco', 5000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
         elseif goodQuality then
 			local goodamount = math.random(3,6)
 			Player.Functions.AddItem('indtobacco', goodamount)
 			TriggerClientEvent('inventory:client:ItemBox', src, sharedItems['indtobacco'], "add")
-			TriggerClientEvent('rsg_notify:client:notifiy', src, 'You harvest '.. goodamount ..' Indian Tobacco', 5000)
+			TriggerClientEvent('QBCore:Notify', src, 9, 'You harvest '.. goodamount ..' Indian Tobacco', 5000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
 		elseif exellentQuality then
 			local exellentamount = math.random(6,12)
 			Player.Functions.AddItem('indtobacco', exellentamount)
 			TriggerClientEvent('inventory:client:ItemBox', src, sharedItems['indtobacco'], "add")
 			Player.Functions.AddItem('indtobaccoseed', 1)
 			TriggerClientEvent('inventory:client:ItemBox', src, sharedItems['indtobaccoseed'], "add")
-			TriggerClientEvent('rsg_notify:client:notifiy', src, 'You harvest '.. exellentamount ..' Indian Tobacco', 5000)
+			TriggerClientEvent('QBCore:Notify', src, 9, 'You harvest '.. exellentamount ..' Indian Tobacco', 5000, 0, 'hud_textures', 'check', 'COLOR_WHITE')
 		else
 			print("something went wrong!")
         end

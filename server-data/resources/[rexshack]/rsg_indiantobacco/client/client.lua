@@ -92,7 +92,7 @@ function DestroyPlant()
 		isDoingAction = false
 		canHarvest = true
     else
-		exports['rsg_notify']:DisplayNotification('error', 5000)
+		exports['qbr-core']:Notify(9, 'error', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
     end
 end
 
@@ -120,7 +120,7 @@ function HarvestPlant()
 		isDoingAction = false
 		canHarvest = true
     else
-		exports['rsg_notify']:DisplayNotification('error', 5000)
+		exports['qbr-core']:Notify(9, 'error', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
     end
 end
 
@@ -248,11 +248,6 @@ AddEventHandler('rsg_indiantobacco:client:removePlantObject', function(plant)
     end
 end)
 
-RegisterNetEvent('rsg_indiantobacco:client:notify')
-AddEventHandler('rsg_indiantobacco:client:notify', function(msg)
-	exports['rsg_notify']:DisplayNotification(msg, 5000)
-end)
-
 -- water plants
 RegisterNetEvent('rsg_indiantobacco:client:waterPlant')
 AddEventHandler('rsg_indiantobacco:client:waterPlant', function()
@@ -277,7 +272,7 @@ AddEventHandler('rsg_indiantobacco:client:waterPlant', function()
 			TriggerServerEvent('rsg_indiantobacco:server:waterPlant', plant.id)
 			isDoingAction = false
 		else
-			exports['rsg_notify']:DisplayNotification('You don\'t have any water!', 5000)
+			exports['qbr-core']:Notify(9, 'You don\'t have any water!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 			Wait(5000)
 			isDoingAction = false
 		end
@@ -308,7 +303,7 @@ AddEventHandler('rsg_indiantobacco:client:feedPlant', function()
 			TriggerServerEvent('rsg_indiantobacco:server:feedPlant', plant.id)
 			isDoingAction = false
 		else
-			exports['rsg_notify']:DisplayNotification('You don\'t have any fertilizer!', 5000)
+			exports['qbr-core']:Notify(9, 'You don\'t have any fertilizer!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 			Wait(5000)
 			isDoingAction = false
 		end
@@ -335,7 +330,7 @@ AddEventHandler('rsg_indiantobacco:client:plantNewSeed', function(type)
 		SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
 		TriggerServerEvent('rsg_indiantobacco:server:plantNewSeed', type, pos)
     else
-		exports['rsg_notify']:DisplayNotification('too close to another plant', 5000)
+		exports['qbr-core']:Notify(9, 'too close to another plant', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
     end
 end)
 
@@ -471,7 +466,7 @@ AddEventHandler("rsg_drugs:client:indianboost", function()
 			Wait(100)
 			ClearPedTasks(player)
 		else
-			exports['rsg_notify']:DisplayNotification('You don\'t have a pipe!', 5000)
+			exports['qbr-core']:Notify(9, 'You don\'t have a pipe!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 		end
 	end, { ['indtobacco'] = 1 })
 end)
