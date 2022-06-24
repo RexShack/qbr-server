@@ -9,7 +9,6 @@
 
 # Dependancies
 - qbr-core : https://github.com/qbcore-redm-framework
-- rsg_notify : https://github.com/RexShack/rsg_notify
 
 # Installation
 - add the indiantobacco.sql to your database
