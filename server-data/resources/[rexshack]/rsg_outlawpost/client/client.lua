@@ -109,8 +109,8 @@ RegisterNetEvent('rsg_outlaws:cient:openMenu', function(data)
 end)
 
 -- wash blood money
-RegisterNetEvent('rsg_outlaws:client:washmoney')
-AddEventHandler('rsg_outlaws:client:washmoney', function()
+RegisterNetEvent('rsg_outlaws:client:sellbloodmoney')
+AddEventHandler('rsg_outlaws:client:sellbloodmoney', function()
     local moneywash = exports['qbr-input']:ShowInput({
         header = "Money Wash",
 		inputs = {
@@ -124,7 +124,7 @@ AddEventHandler('rsg_outlaws:client:washmoney', function()
     })
     if moneywash ~= nil then
         for k,v in pairs(moneywash) do
-			TriggerServerEvent('rsg_outlaws:server:washmoney', v)
+			TriggerServerEvent('rsg_outlaws:server:sellbloodmoney', v)
         end
     end
 end)
