@@ -204,7 +204,7 @@ AddEventHandler('rsg_rhodesbankheist:client:policenpc', function()
 		Wait(500)
 		modelrequest( GetHashKey(Config.HeistNpcs[z]["Model"]) )
 	end
-	local npc = CreatePed(GetHashKey(Config.HeistNpcs[z]["Model"]), Config.HeistNpcs[z]["Pos"].x, Config.HeistNpcs[z]["Pos"].y, Config.HeistNpcs[z]["Pos"].z, Config.HeistNpcs[z]["Heading"], false, false, 0, 0)
+	local npc = CreatePed(GetHashKey(Config.HeistNpcs[z]["Model"]), Config.HeistNpcs[z]["Pos"].x, Config.HeistNpcs[z]["Pos"].y, Config.HeistNpcs[z]["Pos"].z, Config.HeistNpcs[z]["Heading"], true, false, 0, 0)
 	while not DoesEntityExist(npc) do
 		Wait(300)
 	end
