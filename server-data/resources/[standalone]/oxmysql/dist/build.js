@@ -21478,7 +21478,7 @@ var init_update = __esm({
           const latestVersion = release.tag_name.match(/(\d)\.(\d+)\.(\d+)/);
           if (!latestVersion)
             return;
-          if (currentVersion[0] === latestVersion[0])
+          if (currentVersion[0] === latestVersion[0] || currentVersion[0] > latestVersion[0])
             return;
           const updateMessage = currentVersion[3] < latestVersion[3] ? "patch" : currentVersion[2] < latestVersion[2] ? "an update" : "a major update";
           console.log(`^3There is ${updateMessage} available for oxmysql - please update to the latest release (current version: ${currentVersion[0]})\r
@@ -21737,15 +21737,30 @@ var rawQuery = async (type, invokingResource, query, parameters, cb, throwError)
       if (err)
         return reject(err);
       logQuery(invokingResource, query, executionTime, parameters);
-      try {
-        resolve(cb ? cb(parseResponse(type, result)) : null);
-      } catch (err2) {
-      }
+      resolve(cb ? parseResponse(type, result) : null);
     });
+  }).then(async (result) => {
+    if (cb)
+      try {
+        await cb(result);
+      } catch (err) {
+        if (typeof err === "string") {
+          if (err.includes("SCRIPT ERROR:"))
+            return console.log(err);
+          console.log(`^1SCRIPT ERROR in invoking resource ${invokingResource}: ${err}^0`);
+        }
+      }
   }).catch((err) => {
     const error = `${invokingResource} was unable to execute a query!
 ${err.message}
 ${`${query} ${JSON.stringify(parameters)}`}`;
+    TriggerEvent("oxmysql:error", {
+      query,
+      parameters,
+      message: err.message,
+      err,
+      resource: invokingResource
+    });
     if (cb && throwError)
       return cb(null, error);
     throw new Error(error);
@@ -21763,7 +21778,7 @@ var parseTransaction = (invokingResource, queries, parameters, cb) => {
     cb = parameters;
   if (parameters === null || parameters === void 0 || typeof parameters === "function")
     parameters = [];
-  if (queries[0][0]) {
+  if (Array.isArray(queries[0])) {
     const transactions2 = queries.map((query) => {
       if (typeof query[1] !== "object")
         throw new Error(`Transaction parameters must be array or object, received '${typeof query[1]}'.`);
@@ -21797,16 +21812,29 @@ var rawTransaction = async (invokingResource, queries, parameters, callback) => 
     response = true;
   } catch (e2) {
     await connection.rollback();
+    const transactionErrorMessage = e2.sql || transactionError(transactions, parameters);
     console.error(`${invokingResource} was unable to execute a transaction!
 ${e2.message}
-${e2.sql || `${transactionError(transactions, parameters)}`}^0`);
+${transactionErrorMessage}^0`);
+    TriggerEvent("oxmysql:transaction-error", {
+      query: transactionErrorMessage,
+      parameters,
+      message: e2.message,
+      err: e2,
+      resource: invokingResource
+    });
   } finally {
     connection.release();
   }
   if (cb)
     try {
       cb(response);
-    } catch {
+    } catch (err) {
+      if (typeof err === "string") {
+        if (err.includes("SCRIPT ERROR:"))
+          return console.log(err);
+        console.log(`^1SCRIPT ERROR in invoking resource ${invokingResource}: ${err}^0`);
+      }
     }
 };
 
@@ -21864,6 +21892,8 @@ var rawExecute = async (invokingResource, query, parameters, cb, throwError) => 
     pool.getConnection((err, connection) => {
       if (err)
         return reject(err.message);
+      if (parameters.length === 0)
+        return reject(`Query received no parameters.`);
       const placeholders = query.split("?").length - 1;
       parameters.forEach((values, index) => {
         const executionTime = process.hrtime();
@@ -21902,16 +21932,28 @@ var rawExecute = async (invokingResource, query, parameters, cb, throwError) => 
         });
       });
     });
-  }).then((response2) => {
+  }).then(async (response2) => {
     if (cb)
       try {
-        cb(response2);
+        await cb(response2);
       } catch (err) {
+        if (typeof err === "string") {
+          if (err.includes("SCRIPT ERROR:"))
+            return console.log(err);
+          console.log(`^1SCRIPT ERROR in invoking resource ${invokingResource}: ${err}^0`);
+        }
       }
   }).catch((err) => {
     const error = `${invokingResource} was unable to execute a query!
 ${err}
 ${`${query}`}`;
+    TriggerEvent("oxmysql:error", {
+      query,
+      parameters,
+      message: err.message,
+      err,
+      resource: invokingResource
+    });
     if (cb && throwError)
       return cb(null, error);
     throw new Error(error);
