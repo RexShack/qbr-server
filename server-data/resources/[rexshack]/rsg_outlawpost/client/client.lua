@@ -44,7 +44,7 @@ AddEventHandler('rsg_outlaws:client:hostilezone', function(name)
 			Wait(500)
 			modelrequest( GetHashKey(Config.Mission1Npcs[z]["Model"]) )
 		end
-		local npc = CreatePed(GetHashKey(Config.Mission1Npcs[z]["Model"]), Config.Mission1Npcs[z]["Pos"].x, Config.Mission1Npcs[z]["Pos"].y, Config.Mission1Npcs[z]["Pos"].z, Config.Mission1Npcs[z]["Heading"], false, false, 0, 0)
+		local npc = CreatePed(GetHashKey(Config.Mission1Npcs[z]["Model"]), Config.Mission1Npcs[z]["Pos"].x, Config.Mission1Npcs[z]["Pos"].y, Config.Mission1Npcs[z]["Pos"].z, Config.Mission1Npcs[z]["Heading"], true, false, 0, 0)
 		while not DoesEntityExist(npc) do
 			Wait(300)
 		end
