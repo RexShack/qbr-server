@@ -38,10 +38,11 @@
 /* Player HUD */
 
 #playerhud {
-    display: inline-block;
+    display: flex;
+    opacity: 0.8;
     position: absolute;
-    bottom: 5vw;
-    left: 1.1vh;
+    bottom: 1.62vw;
+    left: 15.1vh;
 }
 
 .progress {
